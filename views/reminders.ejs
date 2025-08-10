@@ -1,0 +1,19 @@
+<!doctype html>
+<head>
+    <title>Smaran</title>
+</head>
+<body>
+<h1>Welcome to Smaran</h1>
+<p>Your Reminders</p>
+<% for (let i=0;i<reminders.length;i++){%>
+        <h2><%= reminders[i].title%></h2>
+        <p><%= reminders[i].description%></p>
+        <p><%= new Date(reminders[i].date).toLocaleString('en-IN', { timeZone: 'UTC' })%></p>
+        <p><%= reminders[i].status%></p>
+        <hr>
+    <%}%>
+    
+</body>
+<a href="/">Home</a> | <a href="/priortize">Protize Your today's tasks</a>
+
+</html>
