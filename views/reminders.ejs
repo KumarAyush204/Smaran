@@ -1,19 +1,52 @@
 <!doctype html>
 <head>
     <title>Smaran</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="fav.png">
 </head>
 <body>
-<h1>Welcome to Smaran</h1>
-<p>Your Reminders</p>
+<h1 class="h1 text-center">Smaran</h1>
+<p class="lead text-center">Your Reminders</p>
+
+<!--<div class="d-flex justify-content-between flex-wrap m-5">-->
+<div style="grid-template-columns: 1fr 1fr;" class="d-grid gap-3 m-5">
 <% for (let i=0;i<reminders.length;i++){%>
-        <h2><%= reminders[i].title%></h2>
-        <p><%= reminders[i].description%></p>
-        <p><%= new Date(reminders[i].date).toLocaleString('en-IN', { timeZone: 'UTC' })%></p>
-        <p><%= reminders[i].status%></p>
-        <hr>
+        <% if (reminders[i].priority == "high") {%>
+            <div class="card m-2 p-2 d-inline-block text-center text-bg-primary border-primary">
+                <h2 class="h6"><%= reminders[i].title%></h2>
+                <hr>
+                <p><%= reminders[i].description%></p>
+                <p><%= new Date(reminders[i].date).toLocaleString('en-IN', { timeZone: 'UTC' })%></p>
+                <p><%= reminders[i].status%></p>
+            </div>
+        
+        <%} else if (reminders[i].priority == "mild") {%>
+            <div class="card m-2 p-2 d-inline-block text-center text-bg-info border-primary">
+                <h2 class="h6"><%= reminders[i].title%></h2>
+                <hr>
+                <p><%= reminders[i].description%></p>
+                <p><%= new Date(reminders[i].date).toLocaleString('en-IN', { timeZone: 'UTC' })%></p>
+                <p><%= reminders[i].status%></p>
+            </div>
+        <%} else {%>
+        
+            <div class="card m-2 p-2 d-inline-block text-center text-bg-light border-light">
+                <h2 class="h6"><%= reminders[i].title%></h2>
+                <hr>
+                <p><%= reminders[i].description%></p>
+                <p><%= new Date(reminders[i].date).toLocaleString('en-IN', { timeZone: 'UTC' })%></p>
+                <p><%= reminders[i].status%></p>
+            </div>
+        <%}%>
     <%}%>
+</div>
+    <br>
+    <div class="text-center m-4">
+        <a href="/" class="btn btn-primary">Home</a> | <a href="/priortize" class="btn btn-primary">@Protize Your today's tasks</a>
+    </div>
     
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 </body>
-<a href="/">Home</a> | <a href="/priortize">Protize Your today's tasks</a>
+
 
 </html>

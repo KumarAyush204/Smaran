@@ -1,14 +1,39 @@
 <!doctype html>
 <head>
     <title>Smaran</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="fav.png">
 </head>
 <body>
-<h1>Welcome to Smaran</h1>
-<p>Set Your Prompted Reminder</p>
-    <form action="/callMini" method="post">
-        <input type="text" name="user_content">
-        <input type="submit">    
+<nav class="navbar navbar-expand-lg navbar-primary d-flex bg-primary">
+    <div class="p-2 text-white">
+        Smaran
+    </div>
+    <div class="p-2">
+        <a href="#" class=" text-light" style="text-decoration:None">Home</a>
+    </div>
+    <div class="ms-auto p-2">
+        <a href="#" class="btn btn-light">Sign In</a>
+    </div>
+    
+</nav>
+<h1 class="h1 text-center mt-4">Welcome to Smaran</h1>
+<p class="lead text-center">Set Your Prompted Reminder</p>
+    <form class="row g-3 justify-content-center" action="/callMini" method="post">
+        <div class="d-flex justify-content-center w-100">
+            <div class="col-auto w-50 p-0 m-0">
+                <input class="form-control w-500 rounded-pill" type="text" name="user_content">
+            </div>
+            <div class="col-auto p-0 m-0">
+                <input class="btn btn-primary rounded-pill" type="submit" value="↑">
+            </div> 
+        </div>
     </form>
+    <div class="text-center m-5">
+        <a class="btn btn-primary" href="/reminders">Reminders</a>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 </body>
-<a href="/reminders">Reminders</a>
+
 </html>

@@ -48,11 +48,28 @@ app.get("/reminders",async function (req,res){
 app.get("/priortize",async function (req,res){
     const reminders=await models.REMINDER.find({});
     //Priortize reminders with openai + date required.
-    var user_content=reminders+"use the above reminders and decide priority of reminders; decide priority based on date and time ;['mild','low','high'] return three arrays one having reminder ids that are high, second that are mild and thrif of low priority. **Only return arrays nothing else!!**";
+//    var user_content=reminders+"use the above reminders and decide priority of reminders; decide priority based on date and time ;['mild','low','high'] return three arrays one having reminder ids that are high, second that are mild and thrif of low priority. **Only return arrays nothing else!!**";
+    
+    var user_content="You are given reminders in JSON format:"+reminders+`Task:1. Decide the priority of each reminder based on its date and time. 
+   - "high" = reminders due very soon or overdue
+   - "mild" = reminders due within a moderate time range
+   - "low" = reminders scheduled far in the future
+    2. Return exactly three arrays (no text, no explanation):
+       - First array = IDs of reminders with "high" priority
+       - Second array = IDs of reminders with "mild" priority
+       - Third array = IDs of reminders with "low" priority
+
+    Output format (strictly):
+    [
+      ["id1","id2"],
+      ["id3"],
+      ["id4","id5"]
+    ]`;
+    
     const repl=await mini(user_content).catch((err) => {
   console.error("The sample encountered an error:", err);
 });
-    
+    console.log(repl);
     const obj=JSON.parse(repl);
     for(let i=0;i<obj.length;i++){
         for(let j=0;j<obj[i].length;j++){
@@ -70,7 +87,7 @@ app.get("/priortize",async function (req,res){
     }   
     
     console.log(repl);
-    return res.end("done");
+    return res.redirect('/reminders');
 });
 
 //Checking Server
