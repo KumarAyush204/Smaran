@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+    application:
+        build: .
+        ports: 
+            -   "3000:3000"
+        container_name: smaran
+    database:
+        image: "mongodb/mongodb-community-server:7.0-ubi8"
+        ports:
+            -   "27017:27017"
+        container_name: mongodb
